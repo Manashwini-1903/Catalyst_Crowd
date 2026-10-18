@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log In | Catalyst Crowd</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
+<script type="module" src="../js/auth.js"></script></head>
+
+<body class="auth-page">
+
+    <header class="navbar auth-navbar">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">C</span>
+            <span>Catalyst<span class="logo-highlight">Crowd</span></span>
+        </a>
+
+        <a href="../index.html" class="back-home">← Back to home</a>
+
+    </header>
+
+
+    <main class="auth-layout">
+
+        <!-- LEFT SIDE -->
+        <section class="auth-visual">
+
+            <div class="auth-visual-content">
+
+                <span class="auth-eyebrow">WELCOME BACK</span>
+
+                <h1>
+                    Good things happen<br>
+                    when we <span>come together.</span>
+                </h1>
+
+                <p>
+                    Sign in to discover meaningful campaigns,
+                    support inspiring ideas, and manage the causes
+                    that matter to you.
+                </p>
+
+                <div class="auth-quote">
+                    <span class="quote-mark">“</span>
+                    <p>Every contribution is a step towards something bigger.</p>
+                    <span class="quote-caption">The Catalyst Crowd community</span>
+                </div>
+
+            </div>
+
+            <div class="auth-decoration auth-decoration-one"></div>
+            <div class="auth-decoration auth-decoration-two"></div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="auth-form-section">
+
+            <div class="auth-form-container">
+
+                <div class="auth-mobile-logo">
+                    <span class="logo-icon">C</span>
+                </div>
+
+                <span class="form-eyebrow">YOUR COMMUNITY AWAITS</span>
+
+                <h2>Welcome back!</h2>
+
+                <p class="form-subtitle">
+                    Enter your details to access your account.
+                </p>
+
+
+                <form id="loginForm" novalidate>
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">Email address</label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small class="field-error" id="loginEmailError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="label-row">
+                            <label for="loginPassword">Password</label>
+
+                            <a href="#" id="forgotPassword" class="forgot-link">
+                                Forgot password?
+                            </a>
+                        </div>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="loginPassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small class="field-error" id="loginPasswordError"></small>
+
+                    </div>
+
+
+                    <div
+                        class="form-message"
+                        id="loginMessage"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+
+
+                    <button type="submit" class="btn btn-primary auth-submit">
+                        <span>Log In</span>
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>NEW TO CATALYST CROWD?</span>
+                </div>
+
+
+                <a href="signup.html" class="btn btn-secondary auth-secondary">
+                    Create an Account
+                </a>
+
+
+                <p class="auth-legal">
+                    By continuing, you agree to use the platform responsibly.
+                    Contributions on this demo platform are simulated.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        <span>© 2026 Catalyst Crowd</span>
+        <a href="../index.html">Back to homepage</a>
+    </footer>
+
+</body>
+</html>
+
