@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Catalyst Crowd</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
+<script type="module" src="../js/auth.js"></script></head>
+
+<body class="auth-page">
+
+    <header class="navbar auth-navbar">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">C</span>
+            <span>Catalyst<span class="logo-highlight">Crowd</span></span>
+        </a>
+
+        <a href="../index.html" class="back-home">← Back to home</a>
+
+    </header>
+
+
+    <main class="auth-layout">
+
+        <!-- LEFT SIDE -->
+        <section class="auth-visual signup-visual">
+
+            <div class="auth-visual-content">
+
+                <span class="auth-eyebrow">BE PART OF SOMETHING BIGGER</span>
+
+                <h1>
+                    Your next idea<br>
+                    could <span>change lives.</span>
+                </h1>
+
+                <p>
+                    Join a community where people support meaningful
+                    causes, share ideas, and work towards a better future.
+                </p>
+
+                <div class="signup-benefits">
+
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span>Discover campaigns that matter to you</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span>Create and manage your own campaigns</span>
+                    </div>
+
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span>Track your activity in one place</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="auth-decoration auth-decoration-one"></div>
+            <div class="auth-decoration auth-decoration-two"></div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="auth-form-section">
+
+            <div class="auth-form-container signup-form-container">
+
+                <div class="auth-mobile-logo">
+                    <span class="logo-icon">C</span>
+                </div>
+
+                <span class="form-eyebrow">GET STARTED FOR FREE</span>
+
+                <h2>Create your account</h2>
+
+                <p class="form-subtitle">
+                    A few details and you're ready to begin.
+                </p>
+
+
+                <form id="signupForm" novalidate>
+
+                    <div class="form-group">
+
+                        <label for="signupName">Full name</label>
+
+                        <input
+                            type="text"
+                            id="signupName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            maxlength="80"
+                            required
+                        >
+
+                        <small class="field-error" id="signupNameError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupEmail">Email address</label>
+
+                        <input
+                            type="email"
+                            id="signupEmail"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small class="field-error" id="signupEmailError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupPassword">Password</label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="signupPassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small class="field-hint">
+                            Use at least 8 characters.
+                        </small>
+
+                        <small class="field-error" id="signupPasswordError"></small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">Confirm password</label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Enter your password again"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small class="field-error" id="confirmPasswordError"></small>
+
+                    </div>
+
+
+                    <div
+                        class="form-message"
+                        id="signupMessage"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+
+
+                    <button type="submit" class="btn btn-primary auth-submit">
+                        <span>Create Account</span>
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>ALREADY HAVE AN ACCOUNT?</span>
+                </div>
+
+
+                <a href="login.html" class="btn btn-secondary auth-secondary">
+                    Log In Instead
+                </a>
+
+
+                <p class="auth-legal">
+                    By creating an account, you agree to use the platform
+                    responsibly. Contributions on this demo platform are simulated.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        <span>© 2026 Catalyst Crowd</span>
+        <a href="../index.html">Back to homepage</a>
+    </footer>
+
+</body>
+</html>
+
