@@ -1,0 +1,124 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // USER PROFILES
+    match /users/{userId} {
+
+      allow create: if request.auth != null
+                    && request.auth.uid == userId
+                    && request.resource.data.keys().hasOnly([
+                      'name',
+                      'email',
+                      'createdAt'
+                    ])
+                    && request.resource.data.name is string
+                    && request.resource.data.email is string;
+
+      allow read: if request.auth != null
+                  && request.auth.uid == userId;
+
+      allow update: if request.auth != null
+                    && request.auth.uid == userId
+                    && request.resource.data.diff(resource.data)
+                       .affectedKeys().hasOnly([
+                         'name',
+                         'email'
+                       ])
+                    && request.resource.data.name is string
+                    && request.resource.data.email is string;
+
+      allow delete: if false;
+    }
+
+
+    // CAMPAIGNS
+    match /campaigns/{campaignId} {
+
+      // Anyone can view campaigns.
+      allow read: if true;
+
+      // Create a campaign.
+      allow create: if request.auth != null
+                    && request.resource.data.creatorId
+                       == request.auth.uid
+                    && request.resource.data.title is string
+                    && request.resource.data.description is string
+                    && request.resource.data.category is string
+                    && request.resource.data.goalAmount is number
+                    && request.resource.data.goalAmount > 0
+                    && request.resource.data.deadline is string
+                    && request.resource.data.amountRaised == 0
+                    && request.resource.data.createdAt == request.time;
+
+      // Edit campaign details without changing ownership,
+      // the original creation time, or amountRaised.
+      allow update: if request.auth != null
+                    && resource.data.creatorId == request.auth.uid
+                    && request.resource.data.creatorId
+                       == resource.data.creatorId
+                    && request.resource.data.createdAt
+                       == resource.data.createdAt
+                    && request.resource.data.amountRaised
+                       == resource.data.amountRaised
+                    && request.resource.data.diff(resource.data)
+                       .affectedKeys().hasOnly([
+                         'title',
+                         'description',
+                         'category',
+                         'goalAmount',
+                         'deadline',
+                         'imageUrl'
+                       ])
+                    && request.resource.data.title is string
+                    && request.resource.data.description is string
+                    && request.resource.data.category is string
+                    && request.resource.data.goalAmount is number
+                    && request.resource.data.goalAmount > 0
+                    && request.resource.data.deadline is string;
+
+      // Only the creator can delete their campaign.
+      allow delete: if request.auth != null
+                    && resource.data.creatorId == request.auth.uid;
+    }
+
+
+    // SIMULATED CONTRIBUTIONS
+    match /contributions/{contributionId} {
+
+      // Contribution records contain no names or email addresses.
+      // They are publicly readable so campaign totals can be
+      // calculated on public campaign pages.
+      allow read: if true;
+
+      // Create a simulated contribution.
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasAll([
+                      'campaignId',
+                      'contributorId',
+                      'amount',
+                      'createdAt'
+                    ])
+                    && request.resource.data.keys().hasOnly([
+                      'campaignId',
+                      'contributorId',
+                      'amount',
+                      'createdAt'
+                    ])
+                    && request.resource.data.campaignId is string
+                    && request.resource.data.contributorId
+                       == request.auth.uid
+                    && request.resource.data.amount is number
+                    && request.resource.data.amount > 0
+                    && request.resource.data.amount <= 1000000
+                    && request.resource.data.createdAt == request.time
+                    && exists(
+                      /databases/$(database)/documents/campaigns/$(request.resource.data.campaignId)
+                    );
+
+      // Contribution records are immutable.
+      allow update, delete: if false;
+    }
+  }
+}
